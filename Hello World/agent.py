@@ -3,16 +3,16 @@ from copy import deepcopy
 class Agent:
     """The parent class of all agents
 
-    The Agent Superclass sets the framework by which all agents can perform their tasks. An agent can be defined as a
-    class that contains all necessary data and methods to perform a unique set of tasks individually. Agent Oriented
-    Programming(AOP) is centered around all functions of a program being performed by agents which work together through
-    a hierarchy of managers and employees.
+    The Agent Superclass sets the framework by which all agents can perform their tasks through communicating with one another.
+    An agent can be defined as a class that contains all necessary data and methods to perform a unique set of tasks individually.
+    Agent Oriented Programming(AOP) is centered around all functions of a program being performed by agents which work together
+    through a hierarchy of managers(agents that give orders to other agents) and employees(agents that perform tasks assigned to them).
 
     AOP seeks to model software development after how humans perform complex tasks in groups. Each individual in a group
     has the understanding and skills to achieve their tasks independent of other coworkers. Just as we cannot directly
     change the data within someone's mind, AOP develops data integrity by preventing agents changing the member
     variables of one another unless they specifically ask for such information. If information is required by an
-    individual they can ask the other agent for said data and then update they information. This convention improves
+    individual they can ask the other agent for said data and then update their own information. This convention improves
     modularity, scalability, and cohesion for each agent.
     """
     def __init__(self, agent_name, environment=None):
@@ -24,12 +24,9 @@ class Agent:
 
         Key variables:
         agent_info: defines data that is unique to the agent, allows for dynamic learning
-        collected_info: this is data that is collected from other agents. Used mainly by manager agents to get info from
-        employee agents.
         environment: see the environment class. An environment defines what objects an agent has access to.
         """
         self.agent_info = {}
-        self.collected_info = {}
         self.agent_name = agent_name
         self.environment = environment
         Agent.__agent_list[agent_name] = self
@@ -46,9 +43,6 @@ class Agent:
         agent = Agent.__agent_list[agent_name]
         return getattr(agent, variable_name)
 
-    def report(self, manager, data_name, data):
-        """sends updated information to a manger or coworker agent"""
-        manager.collected_info[self.agent_name + "." + data_name] = data
 
 
 
