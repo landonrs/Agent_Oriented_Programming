@@ -24,8 +24,8 @@ class Agent:
 
         Key variables:
         agent_info: defines data that is unique to the agent, allows for dynamic learning
-        collected_info: this is data that is collected from other agents. Used mainly by managers to get info from
-        employees.
+        collected_info: this is data that is collected from other agents. Used mainly by manager agents to get info from
+        employee agents.
         environment: see the environment class. An environment defines what objects an agent has access to.
         """
         self.agent_info = {}
