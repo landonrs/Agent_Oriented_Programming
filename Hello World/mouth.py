@@ -8,3 +8,8 @@ class Mouth(Agent):
         """default constructor"""
         super(Mouth, self).__init__("mouth")
 
+    def speak(self):
+        message = self.ask("brain", "message")
+        print(message)
+        
+
